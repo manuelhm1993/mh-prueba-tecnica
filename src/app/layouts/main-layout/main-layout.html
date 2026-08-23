@@ -1,8 +1,21 @@
 <header class="main-header">
   <nav>
     <a routerLink="/catalog">Tienda</a>
-    <a routerLink="/cart">Carrito</a>
+    <a routerLink="/cart">
+      Carrito
+      @if (cartService.totalItems() > 0) {
+        <span class="cart-badge">{{ cartService.totalItems() }}</span>
+      }
+    </a>
   </nav>
+
+  @if (authService.isAuthenticated()) {
+    <button type="button" class="logout-btn" (click)="onLogout()">
+      Cerrar sesión ({{ authService.displayName() }})
+    </button>
+  } @else {
+    <a routerLink="/login" class="login-link">Iniciar sesión</a>
+  }
 </header>
 
 <main>
@@ -10,5 +23,5 @@
 </main>
 
 <footer class="main-footer">
-  <p>&copy; 2026 <a href="https://mhenriquez.com" target="_blank">Manuel Henriquez</a> Prueba Técnica</p>
+  <p>&copy; 2026 <a href="https://mhenriquez.com">Manuel Henriquez</a> Prueba Técnica</p>
 </footer>

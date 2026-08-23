@@ -1,10 +1,12 @@
 import { Component, signal, OnInit } from '@angular/core';
 import { ProductService } from '../../../core/services/product.service';
 import { Product } from '../../../core/models/product.model';
+import { CartService } from '../../../core/services/cart.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
@@ -17,7 +19,10 @@ export class ProductList implements OnInit {
 
   readonly skeletonItems = Array.from({ length: 8 });
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    protected cartService: CartService,
+  ) {}
 
   ngOnInit(): void {
     this.productService.getCategories().subscribe({
@@ -30,6 +35,10 @@ export class ProductList implements OnInit {
   onSelectCategory(category: string): void {
     this.selectedCategory.set(category);
     this.loadProducts(category);
+  }
+
+  onAddToCart(product: Product): void {
+    this.cartService.addToCart(product);
   }
 
   private loadProducts(category: string): void {

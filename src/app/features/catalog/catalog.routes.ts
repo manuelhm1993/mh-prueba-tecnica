@@ -6,4 +6,9 @@ export const catalogRoutes: Routes = [
     loadComponent: () =>
       import('./product-list/product-list').then((m) => m.ProductList),
   },
+  {
+    path: ':id',
+    loadComponent: () =>
+      import('./product-detail/product-detail').then((m) => m.ProductDetail),
+  },
 ];
