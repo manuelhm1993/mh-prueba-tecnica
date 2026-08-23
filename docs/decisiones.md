@@ -46,6 +46,16 @@ Este archivo alimenta el resumen de decisiones técnicas del README final.
   Registro local (`registerLocal()` en `AuthService`) queda implementado
   pero sin UI — candidato de plus si sobra tiempo, no requisito.
 
+## Issue 4 — Catálogo de productos
+- `ProductService`: filtrado por categoría vía endpoint dedicado de la API
+  (`/products/category/{cat}`), no filtrado client-side — más fiel a un
+  patrón real de backend con paginación/filtrado server-side.
+- Grid responsivo nativo (`repeat(auto-fill, minmax(...))`) sin media
+  queries — se adapta solo a cualquier viewport.
+- Skeleton loading con shimmer CSS puro durante la carga de productos.
+- Pendiente para Issue 6: estilizar el scroll horizontal de los tabs de
+  categoría (funcional, falta pulido visual).
+
 ---
 
 ## Plantilla para nuevos issues
