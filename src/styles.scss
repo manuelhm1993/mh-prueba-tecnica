@@ -1,1 +1,94 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Chakra Petch";
+  src: url("/fonts/Chakra_Petch/ChakraPetch-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter/Inter-Variable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-primary: #0b2341;
+  --color-accent-red: #e52229;
+  --color-accent-red-hover: #c81e24;
+  --color-accent-blue: #145da0;
+  --color-bg-light: #f8fafc;
+  --color-surface: #ffffff;
+  --color-border: #e2e8f0;
+  --color-text: #1e293b;
+  --color-text-strong: #111827;
+
+  --font-brand: 'Chakra Petch', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-bg-light);
+  color: var(--color-text);
+}
+
+.font-brand {
+  font-family: var(--font-brand);
+}
+
+.btn-primary {
+  background-color: var(--color-accent-red);
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-accent-red-hover);
+  }
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-bg-light);
+  }
+}
+
+// Contenedor con ancho controlado 1024px al 90%
+.page-container {
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 1rem;
+
+  @media (min-width: 768px) {
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    width: 90%;
+    padding-inline: 0;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1400px;
+  }
+}

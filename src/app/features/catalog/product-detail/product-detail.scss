@@ -1,15 +1,35 @@
 .product-detail-page {
-  .back-link {
-    display: inline-block;
-    margin-bottom: 1rem;
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-primary);
     text-decoration: none;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary);
+    }
   }
 }
 
-.detail-content {
+.detail-card {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   flex-wrap: wrap;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 2rem;
 
   img {
     max-width: 320px;
@@ -21,11 +41,33 @@
   .detail-info {
     flex: 1;
     min-width: 260px;
+
+    h1 {
+      font-family: var(--font-brand);
+      font-size: 1.5rem;
+    }
+
+    .category {
+      text-transform: capitalize;
+      color: var(--color-accent-blue);
+      font-weight: 500;
+    }
+
+    .rating {
+      color: var(--color-text);
+      opacity: 0.7;
+    }
   }
 
   .price {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .description {
+    line-height: 1.6;
+    color: var(--color-text);
   }
 
   .quantity-selector {
@@ -38,19 +80,56 @@
       width: 32px;
       height: 32px;
       cursor: pointer;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    span {
+      font-weight: 600;
+      min-width: 1.5rem;
+      text-align: center;
     }
   }
 
   .add-btn {
-    padding: 0.6rem 1.2rem;
+    padding: 0.7rem 1.5rem;
     cursor: pointer;
+    background: var(--color-accent-red);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: var(--color-accent-red-hover);
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .detail-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+
+    img {
+      max-width: 220px;
+    }
+
+    .quantity-selector {
+      justify-content: center;
+    }
   }
 }
 
 .skeleton-detail {
   .skeleton-image,
   .skeleton-line {
-    background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+    background: linear-gradient(90deg, var(--color-border) 25%, #d4dae0 50%, var(--color-border) 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
     border-radius: 4px;
@@ -73,10 +152,6 @@
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }

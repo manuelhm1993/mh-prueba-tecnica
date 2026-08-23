@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#0B2341" />
+  <g transform="rotate(-30 32 32)">
+    <path d="M22 32 V20 A10 10 0 0 1 42 20 V32 Z" fill="#E52229" />
+    <path d="M22 32 V44 A10 10 0 0 0 42 44 V32 Z" fill="#FFFFFF" />
+    <rect x="22" y="10" width="20" height="44" rx="10" fill="none" stroke="#FFFFFF" stroke-width="2.5" />
+    <line x1="22" y1="32" x2="42" y2="32" stroke="#0B2341" stroke-width="2" />
+  </g>
+  <circle cx="48" cy="48" r="10" fill="#E52229" stroke="#FFFFFF" stroke-width="1.5" />
+  <text x="48" y="52" fill="#FFFFFF" font-family="'Chakra Petch', sans-serif" font-size="8" font-weight="bold" text-anchor="middle">24</text>
+</svg>

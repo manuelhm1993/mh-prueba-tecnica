@@ -1,0 +1,22 @@
+.not-found {
+  text-align: center;
+  padding: 4rem 1rem;
+
+  h1 {
+    font-family: var(--font-brand);
+    font-size: 4rem;
+    color: var(--color-accent-red);
+    margin: 0;
+  }
+
+  p {
+    color: var(--color-text);
+    margin: 1rem 0;
+  }
+
+  a {
+    color: var(--color-accent-blue);
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
