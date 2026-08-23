@@ -26,8 +26,25 @@ Este archivo alimenta el resumen de decisiones técnicas del README final.
   que el redirect se evalúe.
 - Ruta `**` (wildcard) al final del array para página 404.
 
-## Issue 3 — Autenticación JWT (en progreso)
-- [pendiente de completar tras implementación]
+## Issue 3 — Autenticación JWT
+- Login real contra `POST /auth/login` de Fake Store API. Credenciales
+  válidas deben existir en `GET /users` — la API rechaza usuarios
+  inventados (confirmado contra la documentación oficial).
+- `AuthService` con Signals: `tokenSignal`/`profileSignal` inicializados
+  leyendo `localStorage` directo — sesión persiste sola al recargar,
+  sin lógica de restauración aparte.
+- Interceptores funcionales (`HttpInterceptorFn`), no basados en clases —
+  coherente con standalone. `authInterceptor` inyecta Bearer token;
+  `errorInterceptor` fuerza logout en cualquier 401.
+- Guard funcional (`CanActivateFn`) protegiendo `/cart` — sin sesión,
+  redirige a `/login` antes de activar la ruta.
+- Nota: el JWT que devuelve Fake Store API es mock — el payload interno
+  no siempre coincide con el usuario que hizo login (API de testing,
+  no producción real). No afecta el flujo de la app.
+- Selector de usuarios de prueba en el login: fetch real a `GET /users`
+  (via `UsersService` nuevo), clic en un usuario reescribe el form.
+  Registro local (`registerLocal()` en `AuthService`) queda implementado
+  pero sin UI — candidato de plus si sobra tiempo, no requisito.
 
 ---
 
