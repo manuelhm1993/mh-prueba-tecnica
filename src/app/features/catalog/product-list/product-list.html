@@ -1,1 +1,45 @@
-<p>product-list works!</p>
+<div class="product-list-page">
+  <nav class="category-tabs">
+    <button
+      type="button"
+      [class.active]="selectedCategory() === 'all'"
+      (click)="onSelectCategory('all')"
+    >
+      Todos
+    </button>
+    @for (cat of categories(); track cat) {
+      <button
+        type="button"
+        [class.active]="selectedCategory() === cat"
+        (click)="onSelectCategory(cat)"
+      >
+        {{ cat }}
+      </button>
+    }
+  </nav>
+
+  @if (errorMessage()) {
+    <p class="error">{{ errorMessage() }}</p>
+  }
+
+  <div class="product-grid">
+    @if (loading()) {
+      @for (item of skeletonItems; track $index) {
+        <div class="product-card skeleton">
+          <div class="skeleton-image"></div>
+          <div class="skeleton-line"></div>
+          <div class="skeleton-line short"></div>
+        </div>
+      }
+    } @else {
+      @for (product of products(); track product.id) {
+        <div class="product-card">
+          <img [src]="product.image" [alt]="product.title" />
+          <h3>{{ product.title }}</h3>
+          <p class="price">${{ product.price }}</p>
+          <p class="rating">⭐ {{ product.rating.rate }} ({{ product.rating.count }})</p>
+        </div>
+      }
+    }
+  </div>
+</div>
