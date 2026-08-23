@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="login-page">
+  <h1>Iniciar sesión</h1>
+  <p class="demo-note">
+    Credenciales de prueba precargadas — puedes cambiar de usuario abajo.
+  </p>
+
+  <form (ngSubmit)="onSubmit()">
+    <label>
+      Usuario
+      <input type="text" name="username" [(ngModel)]="username" required />
+    </label>
+
+    <label>
+      Contraseña
+      <input type="password" name="password" [(ngModel)]="password" required />
+    </label>
+
+    @if (errorMessage()) {
+      <p class="error">{{ errorMessage() }}</p>
+    }
+
+    <button type="submit" [disabled]="loading()">
+      @if (loading()) {
+        Ingresando...
+      } @else {
+        Iniciar sesión
+      }
+    </button>
+  </form>
+
+  @if (demoUsers().length > 0) {
+    <div class="demo-users">
+      <p>Usuarios de prueba disponibles:</p>
+      @for (user of demoUsers(); track user.id) {
+        <button type="button" class="demo-user-btn" (click)="onSelectDemoUser(user)">
+          {{ user.username }}
+        </button>
+      }
+    </div>
+  }
+</div>
