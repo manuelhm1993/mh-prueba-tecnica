@@ -72,6 +72,25 @@ Este archivo alimenta el resumen de decisiones técnicas del README final.
 - Pendiente para Issue 6: responsivo de `cart-item` en viewports < 480px
   (funcional, falta pulido en mobile angosto).
 
+## Issue 6 — Pulido visual y UX
+- Guard de `/cart` protege la **ruta** (ver el carrito), no la **acción**
+  de agregar productos — patrón estándar de e-commerce (carrito de
+  invitado, login exigido solo al querer verlo/proceder). Carrito en
+  localStorage persiste independiente de la sesión, incluyendo al hacer
+  login después de agregar productos como invitado.
+- Contenedor `.page-container` centralizado en MainLayout (90% en
+  desktop ≥1024px, ancho fijo en mobile) — heredado por catálogo,
+  detalle y carrito sin repetir CSS en cada componente.
+- Sticky footer vía flexbox en :host de MainLayout.
+- Selector `<select>` reemplaza tabs de categoría en viewports ≤640px
+  — evita scroll horizontal en mobile.
+- Truncado de títulos largos en catálogo (`-webkit-line-clamp: 2`) —
+  evita descuadre de grid con productos de nombre extenso.
+- Logo de marca real integrado en navbar.
+- Link "Explorar catálogo sin iniciar sesión" en el contenido del login
+  (no en el layout) — coherente con que el catálogo es navegable como
+  invitado; solo /cart exige sesión.
+
 ---
 
 ## Plantilla para nuevos issues

@@ -1,5 +1,5 @@
 <div class="product-detail-page">
-  <a routerLink="/catalog" class="back-link">← Volver al catálogo</a>
+  <a routerLink="/catalog" class="back-btn" aria-label="Volver al catálogo">←</a>
 
   @if (loading()) {
     <div class="skeleton-detail">
@@ -10,7 +10,7 @@
   } @else if (errorMessage()) {
     <p class="error">{{ errorMessage() }}</p>
   } @else if (product(); as p) {
-    <div class="detail-content">
+    <div class="detail-card">
       <img [src]="p.image" [alt]="p.title" />
       <div class="detail-info">
         <h1>{{ p.title }}</h1>

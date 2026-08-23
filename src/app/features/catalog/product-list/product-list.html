@@ -18,6 +18,18 @@
     }
   </nav>
 
+  <!-- Responsive select filter -->
+  <select
+    class="category-select"
+    [value]="selectedCategory()"
+    (change)="onSelectCategory($any($event.target).value)"
+  >
+    <option value="all">Todos</option>
+    @for (cat of categories(); track cat) {
+      <option [value]="cat">{{ cat }}</option>
+    }
+  </select>
+
   @if (errorMessage()) {
     <p class="error">{{ errorMessage() }}</p>
   }
