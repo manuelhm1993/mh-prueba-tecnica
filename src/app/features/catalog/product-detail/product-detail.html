@@ -1,0 +1,34 @@
+<div class="product-detail-page">
+  <a routerLink="/catalog" class="back-link">← Volver al catálogo</a>
+
+  @if (loading()) {
+    <div class="skeleton-detail">
+      <div class="skeleton-image"></div>
+      <div class="skeleton-line"></div>
+      <div class="skeleton-line short"></div>
+    </div>
+  } @else if (errorMessage()) {
+    <p class="error">{{ errorMessage() }}</p>
+  } @else if (product(); as p) {
+    <div class="detail-content">
+      <img [src]="p.image" [alt]="p.title" />
+      <div class="detail-info">
+        <h1>{{ p.title }}</h1>
+        <p class="category">{{ p.category }}</p>
+        <p class="rating">⭐ {{ p.rating.rate }} ({{ p.rating.count }} reseñas)</p>
+        <p class="price">${{ p.price }}</p>
+        <p class="description">{{ p.description }}</p>
+
+        <div class="quantity-selector">
+          <button type="button" (click)="decrementQuantity()">-</button>
+          <span>{{ quantity() }}</span>
+          <button type="button" (click)="incrementQuantity()">+</button>
+        </div>
+
+        <button type="button" class="add-btn" (click)="onAddToCart()">
+          Agregar al carrito
+        </button>
+      </div>
+    </div>
+  }
+</div>

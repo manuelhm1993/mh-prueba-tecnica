@@ -21,4 +21,8 @@ export class ProductService {
       `${environment.apiUrl}/products/category/${category}`,
     );
   }
+
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${environment.apiUrl}/products/${id}`);
+  }
 }

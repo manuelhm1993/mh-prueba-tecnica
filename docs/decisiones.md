@@ -56,6 +56,22 @@ Este archivo alimenta el resumen de decisiones técnicas del README final.
 - Pendiente para Issue 6: estilizar el scroll horizontal de los tabs de
   categoría (funcional, falta pulido visual).
 
+## Issue 5 — Carrito de compras (incluye vista de detalle, scope extendido)
+- `CartService` con Signals: `itemsSignal` inicializado leyendo `localStorage`
+  directo — mismo patrón que `AuthService` con el token, carrito persiste
+  solo al recargar.
+- `totalItems`/`totalPrice` como `computed()` — se recalculan automáticos,
+  sin refresh manual desde ningún componente.
+- Único punto de escritura (`updateItems()`) centraliza signal.set() +
+  persistencia — evita que un método nuevo olvide guardar en localStorage.
+- `decrement()` con guarda: si la cantidad llega a 0, elimina la línea en
+  vez de dejar un `quantity: 0` — evita estado inválido en el carrito.
+- Vista de detalle de producto (`/catalog/:id`) agregada dentro de este
+  issue, fuera del checklist original de Issue 4 — decisión de scope
+  tomada en desarrollo, no requisito explícito del enunciado.
+- Pendiente para Issue 6: responsivo de `cart-item` en viewports < 480px
+  (funcional, falta pulido en mobile angosto).
+
 ---
 
 ## Plantilla para nuevos issues

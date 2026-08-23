@@ -34,10 +34,13 @@
     } @else {
       @for (product of products(); track product.id) {
         <div class="product-card">
-          <img [src]="product.image" [alt]="product.title" />
-          <h3>{{ product.title }}</h3>
+          <a [routerLink]="['/catalog', product.id]">
+            <img [src]="product.image" [alt]="product.title" />
+            <h3>{{ product.title }}</h3>
+          </a>
           <p class="price">${{ product.price }}</p>
           <p class="rating">⭐ {{ product.rating.rate }} ({{ product.rating.count }})</p>
+          <button type="button" (click)="onAddToCart(product)">Agregar al carrito</button>
         </div>
       }
     }
